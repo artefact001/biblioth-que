@@ -4,25 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GESTION Bibliothéque</title>
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #000000;
+            padding-top: 50px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #343a40;
+            text-align: center;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #000000;
+            border-color: #000000;
+        }
+    </style>
 </head>
 <body>
-    <h3 style="text-align: center;margin-bottom: 20px;color: #333;">Veuillez renseigner vos identifiants</h3>
 
-    @foreach($errors->all() as $error)
-        {{$error}}
-    @endforeach
-    <form action="{{ route('authentification-login') }}" method="POST" style="max-width: 400px;margin: 0 auto;padding: 20px;background-color: #f9f9f9;border-radius: 8px;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
-    @csrf
-        <div class="mb-3" style="width: 100%;padding: 10px;margin-bottom: 15px;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;">
-          <label for="email" class="form-label" style="font-weight: bold;">Addresse email</label>
-          <input type="email" class="form-control" id="email" name="email">
+
+
+
+<div class="container mt-5">
+    <h1>Login</h1>
+    <form method="POST" action="{{ route('auth.postLogin') }}" class="row g-3">
+        @csrf
+
+        <!-- Email Address -->
+        <div class="col-md-12">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+            @error('email')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
-        <div class="mb-3" style="width: 100%;padding: 10px;margin-bottom: 15px;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;">
-          <label for="password" class="form-label" style="font-weight: bold;">Mot de passe</label>
-          <input type="password" class="form-control" id="password" name="password">
+
+        <!-- Password -->
+        <div class="col-md-12">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password">
+            @error('password')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
-        <button type="submit" class="btn btn-primary" style="display: inline-block;padding: 10px 20px;background-color: #007bff;color: #fff;border: none;border-radius: 4px;cursor: pointer;transition: background-color 0.3s ease;">Se connecter</button>
-      </form>
+
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary mt-3">
+                Login
+            </button>
+            <p>Vous n'avez pas de compte ?</p> <a href=""></a>
+        </div>
+    </form>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
