@@ -32,7 +32,10 @@
         <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
         <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
         <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
-        <a href="logout" class="btn btn-sm btn-outline-secondary" role="button">Deconexion</a>
+        <a href="login" class="btn btn-sm btn-outline-secondary" role="button">Connexion</a>
+        @auth
+        <a href="logout" class="btn btn-sm btn-outline-secondary" role="button">Deconnexion</a>
+        @endauth
 
       </form>
     </nav>
