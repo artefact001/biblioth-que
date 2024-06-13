@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ajouter un Livre</title>
+    @auth
+  <title>Ajouter un Livre</title>
+  @endauth
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -30,8 +32,10 @@
     <nav class="navbar navbar-light bg-light">
       <form class="container-fluid justify-content-end">
         <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
-        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
-        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
+        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="logout" class="btn btn-sm btn-outline-secondary" role="button">Deconexion</a>
+
       </form>
     </nav>
   </header>
@@ -40,7 +44,9 @@
 <body>
 
 <div class="container mt-5">
-    <h1>Ajouter un Livre</h1>
+    @auth
+  <h1>Ajouter un Livre</h1>
+  @endauth
     <form action="{{ route('livres.store') }}" method="POST" enctype="multipart/form-data" class="row g-3">
         @csrf
         <div class="col-md-6">
@@ -88,7 +94,9 @@
             <input type="file" class="form-control" id="image" name="image">
         </div>
         <div class="col-md-12">
-            <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+           @auth
+           <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+           @endauth
         </div>
     </form>
 </div>

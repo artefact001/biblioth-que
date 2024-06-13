@@ -30,8 +30,8 @@
     <nav class="navbar navbar-light bg-light">
       <form class="container-fluid justify-content-end">
         <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
-        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
-        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
+        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
       </form>
     </nav>
   </header>
@@ -56,11 +56,13 @@
                     <td>{{ $categorie->description }}</td>
                     <td>
                         <a href="{{ route('categories.show', $categorie->id) }}" class="btn btn-info btn-sm">Détails</a>
-                        <a href="{{ route('categories.edit', $categorie->id) }}" class="btn btn-warning btn-sm">Modifier</a>
-                        <form action="{{ route('categories.destroy', $categorie->id) }}" method="POST" class="d-inline">
+                        @auth
+                            <a href="{{ route('categories.edit', $categorie->id) }}" class="btn btn-warning btn-sm">Modifier</a>
+                           <form action="{{ route('categories.destroy', $categorie->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                            @endauth
                         </form>
                     </td>
                 </tr>

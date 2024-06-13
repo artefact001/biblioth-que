@@ -30,8 +30,8 @@
     <nav class="navbar navbar-light bg-light">
       <form class="container-fluid justify-content-end">
         <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
-        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
-        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
+        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
       </form>
     </nav>
   </header>
@@ -39,7 +39,7 @@
 <body>
 
 <div class="container mt-5">
-    <h1>Ajouter un Rayon</h1>
+   @auth <h1>Ajouter un Rayon</h1>  @endauth
     <form action="{{ route('rayons.store') }}" method="POST" class="row g-3">
         @csrf
         <div class="col-md-12">

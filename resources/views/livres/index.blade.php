@@ -30,8 +30,10 @@
     <nav class="navbar navbar-light bg-light">
       <form class="container-fluid justify-content-end">
         <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
-        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
-        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
+        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="logout" class="btn btn-sm btn-outline-secondary" role="button">Deconexion</a>
+
       </form>
     </nav>
   </header>
@@ -64,11 +66,14 @@
                     <td>{{ $livre->categorie->libelle }}</td>
                     <td>
                         <a href="{{ route('livres.show', $livre->id) }}" class="btn btn-info">Détails</a>
+                        @auth
+
+
                         <a href="{{ route('livres.edit', $livre->id) }}" class="btn btn-warning">Modifier</a>
                         <form action="{{ route('livres.destroy', $livre->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                            <button type="submit" class="btn btn-danger">Supprimer</button>   @endauth
                         </form>
                     </td>
                 </tr>

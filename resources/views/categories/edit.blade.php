@@ -30,8 +30,8 @@
     <nav class="navbar navbar-light bg-light">
       <form class="container-fluid justify-content-end">
         <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
-        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
-        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
+        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
       </form>
     </nav>
   </header>
@@ -39,7 +39,9 @@
 <body>
 
 <div class="container mt-5">
-    <h1>Modifier la Catégorie</h1>
+   @auth
+  <h1>Modifier la Catégorie</h1>
+  @endauth
     <form action="{{ route('categories.update', $categorie->id) }}" method="POST" class="row g-3">
         @csrf
         @method('PUT')
@@ -52,7 +54,9 @@
             <textarea class="form-control" id="description" name="description" rows="3">{{ $categorie->description }}</textarea>
         </div>
         <div class="col-md-12">
+            @auth
             <button type="submit" class="btn btn-primary mt-3">Mettre à Jour</button>
+            @endauth
         </div>
     </form>
 </div>

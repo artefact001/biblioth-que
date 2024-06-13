@@ -30,8 +30,10 @@
     <nav class="navbar navbar-light bg-light">
       <form class="container-fluid justify-content-end">
         <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
-        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
-        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
+        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="logout" class="btn btn-sm btn-outline-secondary" role="button">Deconexion</a>
+
       </form>
     </nav>
   </header>
@@ -39,7 +41,7 @@
 <body>
 
     <div class="container mt-5">
-        <h1>Détails du Livre</h1>
+        @auth <h1>Détails du Livre</h1>  @endauth
         <div class="card">
             <div class="card-header">
                 {{ $livre->titre }}

@@ -17,7 +17,7 @@
             background-color: #fff;
             border-radius: 8px;
             padding: 30px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(240, 239, 239, 0.1);
         }
         h1 {
             margin-bottom: 30px;
@@ -30,8 +30,8 @@
     <nav class="navbar navbar-light bg-light">
       <form class="container-fluid justify-content-end">
         <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
-        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
-        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
+        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
       </form>
     </nav>
   </header>
@@ -39,7 +39,9 @@
 <body>
 
 <div class="container mt-5">
-    <h1>Ajouter une Catégorie</h1>
+   @auth
+   <h1>Ajouter une Catégorie</h1>
+   @endauth
     <form action="{{ route('categories.store') }}" method="POST" class="row g-3">
         @csrf
         <div class="col-md-12">
@@ -51,7 +53,9 @@
             <textarea class="form-control" id="description" name="description" rows="3"></textarea>
         </div>
         <div class="col-md-12">
-            <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+          @auth
+         <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+         @endauth
         </div>
     </form>
 </div>
@@ -60,3 +64,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

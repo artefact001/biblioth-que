@@ -30,15 +30,15 @@
     <nav class="navbar navbar-light bg-light">
       <form class="container-fluid justify-content-end">
         <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
-        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
-        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
+        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
       </form>
     </nav>
   </header>
 <body>
 
 <div class="container mt-5">
-    <h1>Modifier le Rayon</h1>
+   @auth <h1>Modifier le Rayon</h1> @endauth
     <form action="{{ route('rayons.update', $rayon->id) }}" method="POST" class="row g-3">
         @csrf
         @method('PUT')
@@ -51,7 +51,7 @@
             <input type="text" class="form-control" id="partie" name="partie" value="{{ $rayon->partie }}" required>
         </div>
         <div class="col-md-12">
-            <button type="submit" class="btn btn-primary mt-3">Mettre à Jour</button>
+           @auth <button type="submit" class="btn btn-primary mt-3">Mettre à Jour</button>   @endauth
         </div>
     </form>
 </div>

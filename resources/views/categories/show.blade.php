@@ -30,8 +30,8 @@
     <nav class="navbar navbar-light bg-primary d-center">
       <form class="container-fluid justify-content-end">
         <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
-        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
-        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
+        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
       </form>
     </nav>
   </header>
@@ -41,7 +41,7 @@
 <div class="container mt-5">
     <h1>Détails de la Catégorie</h1>
     <div class="card">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header  text-white">
             {{ $categorie->libelle }}
         </div>
         <div class="card-body">
