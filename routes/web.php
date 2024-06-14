@@ -23,6 +23,7 @@ Route::delete('rayons/{rayon}', [RayonController::class, 'destroy'])->name('rayo
 
 Route::get('/livres', [LivreController::class, 'index'])->name('livres.index');
 Route::get('/livres/create', [LivreController::class, 'create'])->name('livres.create');
+// })->middleware('auth')->name('livres.create'');
 Route::post('/livres', [LivreController::class, 'store'])->name('livres.store');
 Route::get('/livres/{livre}', [LivreController::class, 'show'])->name('livres.show');
 Route::get('/livres/{livre}/edit', [LivreController::class, 'edit'])->name('livres.edit');
