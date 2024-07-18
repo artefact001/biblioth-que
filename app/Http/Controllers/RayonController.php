@@ -5,7 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Rayon;
 use Illuminate\Http\Request;
 
-class RayonController extends Controller {
+class RayonController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth')->except('show','index');
+    }
+
     public function index() {
         $rayons = Rayon::all();
         return view('rayons.index', compact('rayons'));

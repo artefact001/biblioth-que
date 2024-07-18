@@ -29,24 +29,23 @@
 <header>
     <nav class="navbar navbar-light bg-light">
       <form class="container-fluid justify-content-end">
-        <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
+        <a href="livres" class="btn btn-outline-success me-2" role="button">Livres</a>
         <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
         <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
         @guest
         <a href="login" class="btn btn-sm btn-outline-secondary" role="button">Connexion</a>
         @endguest
         @auth
-        <a href="logout" class="btn btn-sm btn-outline-secondary" role="button">Deconnexion</a>
+        <a href="logout" class="btn btn-sm btn-outline-secondary" role="button">Déconnexion</a>
         @endauth
-
       </form>
     </nav>
-  </header>
+</header>
 
 <body>
 
     <div class="container mt-5">
-        @auth <h1>Détails du Livre</h1>  @endauth
+        @auth <h1>Détails du Livre</h1> @endauth
         <div class="card">
             <div class="card-header">
                 {{ $livre->titre }}
@@ -54,19 +53,19 @@
             <div class="card-body">
                 <p class="card-text"><strong>Auteur: </strong>{{ $livre->auteur }}</p>
                 <p class="card-text"><strong>ISBN: </strong>{{ $livre->isbn }}</p>
-                <p class="card-text"><strong>Editeur: </strong>{{ $livre->editeur }}</p>
+                <p class="card-text"><strong>Éditeur: </strong>{{ $livre->editeur }}</p>
                 <p class="card-text"><strong>Rayon: </strong>{{ $livre->rayon->libelle }}</p>
                 <p class="card-text"><strong>Catégorie: </strong>{{ $livre->categorie->libelle }}</p>
                 <p class="card-text"><strong>Date de Publication: </strong>{{ $livre->date_de_publication }}</p>
                 <p class="card-text"><strong>Nombre de Pages: </strong>{{ $livre->nombre_de_pages }}</p>
-                    <p class="card-text"><strong>Image: </strong></p>
-                    <img src="{{ asset('storage/app/public/'.$livre->image) }}" alt="{{ $livre->titre }}" class="img-fluid">
+                <p class="card-text"><strong>Image: </strong></p>
+                <img src="{{ asset('storage/' . $livre->image) }}" alt="{{ $livre->titre }}" class="img-fluid">
                 <a href="{{ route('livres.index') }}" class="btn btn-secondary mt-3">Retour</a>
             </div>
         </div>
     </div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

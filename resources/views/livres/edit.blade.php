@@ -91,6 +91,9 @@
         <div class="col-md-6">
             <label for="image" class="form-label">Image</label>
             <input type="file" class="form-control" id="image" name="image">
+            @if($livre->image)
+                <img src="{{ asset('storage/'.$livre->image) }}" alt="{{ $livre->titre }}" class="img-fluid mt-2">
+            @endif
         </div>
         <div class="col-md-12">
            @auth <button type="submit" class="btn btn-primary mt-3">Mettre à Jour</button>  @endauth

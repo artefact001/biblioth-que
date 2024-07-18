@@ -24,34 +24,19 @@ class AuthController extends Controller
         ]);
 
         // Créer l'utilisateur
-
         $user = new User();
-        // User::create($request->all() );
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
 
-
         return redirect()->route('auth.getLogin');
-         }
+    }
 
-        public function login() {
-            return view('login');
-        }
-
-
-
-
-
-        // User::create($request->all() );
-
-        // Connectez l'utilisateur après son inscription
-        // Auth::login($user);
-
-    //     // Redirigez vers la page de tableau de bord ou une autre page
-    //     return redirect()->route('login');
-    // }
+    public function login()
+    {
+        return view('Auth.login');
+    }
 
     public function getLogin()
     {

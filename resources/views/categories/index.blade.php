@@ -24,54 +24,83 @@
             color: #343a40;
             text-align: center;
         }
+        .card-deck {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .card {
+            flex: 1 1 calc(33.333% - 20px);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card-title {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 10px;
+        }
+        .card-text {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .card-footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .btn-icon {
+            font-size: 1.2em;
+        }
     </style>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-SZC4UzMIblzyPl2t+B4VVvhx0+jN+M0lPdU5Y7hnGRk3SpWFE0tOGqfMaTiH9B26iSZM6KrJZoGBvi1Kv7I5lg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<header>
-    <nav class="navbar navbar-light bg-light">
-      <form class="container-fluid justify-content-end">
-        <a href="livres" class="btn btn-outline-success me-2" role="button">livres</a>
-        <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
-        <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
-      </form>
-    </nav>
-  </header>
-
 <body>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <form class="container-fluid justify-content-end">
+                <a href="livres" class="btn btn-outline-success me-2" role="button">Livres</a>
+                <a href="categories" class="btn btn-sm btn-outline-secondary" role="button">Catégories</a>
+                <a href="rayons" class="btn btn-sm btn-outline-secondary" role="button">Rayons</a>
+            </form>
+        </nav>
+    </header>
 
-<div class="container mt-5">
-    <h1>Liste des Catégories</h1>
-    <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Ajouter une Catégorie</a>
-    <table class="table table-bordered">
-        <thead class="table-dark">
-            <tr>
-                <th>Libellé</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container mt-5">
+        <h1>Liste des Catégories</h1>
+        <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Ajouter une Catégorie</a>
+        <div class="card-deck">
             @foreach($categories as $categorie)
-                <tr>
-                    <td>{{ $categorie->libelle }}</td>
-                    <td>{{ $categorie->description }}</td>
-                    <td>
-                        <a href="{{ route('categories.show', $categorie->id) }}" class="btn btn-info btn-sm">Détails</a>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $categorie->libelle }}</h5>
+                        <p class="card-text">{{ $categorie->description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route('categories.show', $categorie->id) }}" class="btn btn-info btn-icon"><i class="fas fa-info-circle"></i></a>
                         @auth
-                            <a href="{{ route('categories.edit', $categorie->id) }}" class="btn btn-warning btn-sm">Modifier</a>
-                           <form action="{{ route('categories.destroy', $categorie->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-                            @endauth
-                        </form>
-                    </td>
-                </tr>
+                            <a href="{{ route('categories.edit', $categorie->id) }}" class="btn btn-warning btn-icon"><i class="fas fa-edit"></i></a>
+                            <form action="{{ route('categories.destroy', $categorie->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-icon"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        @endauth
+                    </div>
+                </div>
             @endforeach
-        </tbody>
-    </table>
-</div>
+        </div>
+    </div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FontAwesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-Fo3rlrZj/kTcAVq3ttr3+6yQ5Zol8Zlu4e4y0FqAIeb8cHqg1yZIQ61C1P5ylF9xTMEp3RkSE30fE4DdGyaOw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
